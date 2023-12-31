@@ -41,15 +41,24 @@ const useMusicPlayer = () => {
   }
 
   function playPreviousTrack() {
-    const newIndex =
-      (((state.currentTrackIndex + -1) % state.tracks.length) +
-        state.tracks.length) %
-      state.tracks.length;
+    // const newIndex =
+    //   (((state.currentTrackIndex + -1) % state.tracks.length) +
+    //     state.tracks.length) %
+    //   state.tracks.length;
+
+    let newIndex = state.currentTrackIndex - 1;
+    if (newIndex < 0) {
+      newIndex = 2;
+    }
     playTrack(newIndex);
   }
 
   function playNextTrack() {
-    const newIndex = (state.currentTrackIndex + 1) % state.tracks.length;
+    // const newIndex = (state.currentTrackIndex + 1) % state.tracks.length;
+    let newIndex = state.currentTrackIndex + 1;
+    if (newIndex > 2) {
+      newIndex = 0;
+    }
     playTrack(newIndex);
   }
 
